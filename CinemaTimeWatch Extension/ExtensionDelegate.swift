@@ -21,11 +21,18 @@
 */
 
 import WatchKit
+<<<<<<< HEAD
 import WatchConnectivity
 
 let NotificationPurchasedMovieOnWatch = "PurchasedMovieOnWatch"
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
+=======
+
+let NotificationPurchasedMovieOnWatch = "PurchasedMovieOnWatch"
+
+class ExtensionDelegate: NSObject, WKExtensionDelegate {
+>>>>>>> origin/dev
   
   lazy var documentsDirectory: String = {
       return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
@@ -55,10 +62,14 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
   // MARK: - Watch Connectivity
   
   private func setupWatchConnectivity() {
+<<<<<<< HEAD
     if WCSession.isSupported() {
       let session = WCSession.defaultSession()
       session.delegate = self
       session.activateSession()
     }
+=======
+    // TODO: Update to set up watch connectivity
+>>>>>>> origin/dev
   }
 }
