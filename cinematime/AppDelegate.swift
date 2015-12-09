@@ -90,4 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
       session.activateSession()
     }
   }
+  
+  // 1
+  func session(session: WCSession,  didReceiveApplicationContext  applicationContext:[String:AnyObject]) {
+    // 2
+    if let movies = applicationContext["movies"] as? [String] {
+      // 3
+      TicketOffice.sharedInstance.purchaseTicketsForMovies(movies)
+      dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName(NotificaitonPurchasedMovieOnWatch, object: nil)
+      }
+    }
+  }
 }
