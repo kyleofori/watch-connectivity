@@ -66,7 +66,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
   }
   
   private func sendPurchasedMoviesToWatch(notification: NSNotification) {
-    // TODO: Update to send purchased movies to the watch
+    if WCSession.isSupported() {
+      if let movies = TicketOffice.sharedInstance.purchasedMovieTicketIDs() {
+      let session = WCSession.defaultSession()
+        if session.watchAppInstalled {
+          do {
+            let dictionary = ["movies": movies]
+            try session.updateApplicationContext(dictionary)
+          } catch {
+            print("ERROR: \(error)")
+          }
+        }
+      }
+    }    
   }
   
   // MARK: - Watch Connectivity

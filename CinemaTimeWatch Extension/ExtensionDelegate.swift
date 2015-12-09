@@ -61,4 +61,18 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
       session.activateSession()
     }
   }
+  
+  // 1
+  func session(session: WCSession, didReceiveApplicationContext applicationContext:[String:AnyObject]) {
+    // 2
+    if let movies = applicationContext["movies"] as? [String] {
+      // 3
+      TicketOffice.sharedInstance.purchaseTicketsForMovies(movies)
+      // 4
+      dispatch_async(dispatch_get_main_queue()) { () -> Void in WKInterfaceController.reloadRootControllersWithNames(
+        ["PurchasedMovieTickets"], contexts: nil)
+      }
+    }
+  }
+
 }
