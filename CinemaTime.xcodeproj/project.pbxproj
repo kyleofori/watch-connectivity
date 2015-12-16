@@ -44,6 +44,7 @@
 		4AD49B851B5C293A008868F1 /* something_to_sing_about.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4AD49B811B5C293A008868F1 /* something_to_sing_about.jpg */; };
 		4AD49B861B5C293A008868F1 /* the_royal_bed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4AD49B821B5C293A008868F1 /* the_royal_bed.jpg */; };
 		4AD49B871B5C293A008868F1 /* one_body_too_many.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4AD49B831B5C293A008868F1 /* one_body_too_many.jpg */; };
+		CE2993A91C1F2BBC00D64593 /* AppWatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2993A81C1F2BBC00D64593 /* AppWatchSessionManager.swift */; };
 		CED0B9891C15F0FF00EB711A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED0B9871C15F0FF00EB711A /* Interface.storyboard */; };
 		CED0B98B1C15F0FF00EB711A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED0B98A1C15F0FF00EB711A /* Assets.xcassets */; };
 		CED0B9921C15F10000EB711A /* CinemaTime WatchKit App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CED0B9911C15F10000EB711A /* CinemaTime WatchKit App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -151,6 +152,7 @@
 		4AD49B811B5C293A008868F1 /* something_to_sing_about.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = something_to_sing_about.jpg; sourceTree = "<group>"; };
 		4AD49B821B5C293A008868F1 /* the_royal_bed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = the_royal_bed.jpg; sourceTree = "<group>"; };
 		4AD49B831B5C293A008868F1 /* one_body_too_many.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = one_body_too_many.jpg; sourceTree = "<group>"; };
+		CE2993A81C1F2BBC00D64593 /* AppWatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppWatchSessionManager.swift; path = cinematime/AppWatchSessionManager.swift; sourceTree = SOURCE_ROOT; };
 		CED0B9851C15F0FF00EB711A /* CinemaTime WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CinemaTime WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED0B9881C15F0FF00EB711A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		CED0B98A1C15F0FF00EB711A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD49B181B5AA55E008868F1 /* AppDelegate.swift */,
+				CE2993A81C1F2BBC00D64593 /* AppWatchSessionManager.swift */,
 				4AD49B371B5ACD62008868F1 /* TicketsTableViewController.swift */,
 				4AD49B3B1B5AE9E1008868F1 /* MoviesTableViewController.swift */,
 				4AD49B331B5AB6D2008868F1 /* MovieDetailViewController.swift */,
@@ -510,6 +513,7 @@
 			files = (
 				4A87DDC31B6DC8BD00046072 /* QRCode+Extension.swift in Sources */,
 				4AD49B3E1B5AEFB9008868F1 /* TicketOffice.swift in Sources */,
+				CE2993A91C1F2BBC00D64593 /* AppWatchSessionManager.swift in Sources */,
 				4AD49B3C1B5AE9E1008868F1 /* MoviesTableViewController.swift in Sources */,
 				4AD49B341B5AB6D2008868F1 /* MovieDetailViewController.swift in Sources */,
 				4AD49B191B5AA55E008868F1 /* AppDelegate.swift in Sources */,

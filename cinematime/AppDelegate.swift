@@ -23,23 +23,20 @@
 import UIKit
 import WatchConnectivity
 
-
 let NotificationPurchasedMovieOnPhone = "PurchasedMovieOnPhone"
 let NotificaitonPurchasedMovieOnWatch = "PurchasedMovieOnWatch"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
-  lazy var notificationCenter: NSNotificationCenter = {
-    return NSNotificationCenter.defaultCenter()
-    }()
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     setupTheme(application: application)
-    setupWatchConnectivity()
-    setupNotificationCenter()
+    if WCSession.isSupported() {
+      AppWatchSessionManager.sharedManager.startSession()
+    }
+    AppWatchSessionManager.sharedManager.setupNotificationCenter()
     return true
   }
   
@@ -56,51 +53,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     // Application
     application.statusBarStyle = UIStatusBarStyle.LightContent
   }
-  
-  // MARK: - Notification Center
-  
-  private func setupNotificationCenter() {
-    notificationCenter.addObserverForName(NotificationPurchasedMovieOnPhone, object: nil, queue: nil) { (notification:NSNotification) -> Void in
-      self.sendPurchasedMoviesToWatch(notification)
-    }
-  }
-  
-  private func sendPurchasedMoviesToWatch(notification: NSNotification) {
-    if WCSession.isSupported() {
-      if let movies = TicketOffice.sharedInstance.purchasedMovieTicketIDs() {
-      let session = WCSession.defaultSession()
-        if session.watchAppInstalled {
-          do {
-            let dictionary = ["movies": movies]
-            try session.updateApplicationContext(dictionary)
-          } catch {
-            print("ERROR: \(error)")
-          }
-        }
-      }
-    }    
-  }
-  
-  // MARK: - Watch Connectivity
-  
-  private func setupWatchConnectivity() {
-    if WCSession.isSupported() {
-      let session = WCSession.defaultSession()
-      session.delegate = self
-      session.activateSession()
-    }
-  }
-  
-  // 1
-  func session(session: WCSession,  didReceiveApplicationContext  applicationContext:[String:AnyObject]) {
-    // 2
-    if let movies = applicationContext["movies"] as? [String] {
-      // 3
-      TicketOffice.sharedInstance.purchaseTicketsForMovies(movies)
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.postNotificationName(NotificaitonPurchasedMovieOnWatch, object: nil)
-      }
-    }
-  }
 }
+
